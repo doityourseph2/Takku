@@ -33,9 +33,10 @@ let motorDebugInfo = {
 function preload() {
   // Load the faceMesh model
   faceMesh = ml5.faceMesh(options);
-  audios[0] = loadSound("taloki.mp3"); // Replace with your own sound file
-  audios[1] = loadSound("tetakere.mp3"); // Replace with your own sound file
-  audios[2] = loadSound("tuki.mp3"); // Replace with your own sound file
+  audios[0] = loadSound("taloki.mp3"); 
+  audios[1] = loadSound("tetakere.mp3"); 
+  audios[2] = loadSound("tuki.mp3"); 
+
 }
 
 function setup() {
@@ -70,8 +71,12 @@ function setup() {
 
   // Create a LowPass filter for bass-only audio
   bassFilter = new p5.LowPass();
-  bassFilter.freq(150); // Set the cutoff frequency to 150 Hz for bass-only
+  bassFilter.freq(300); // Set the cutoff frequency to 150 Hz for bass-only
   bassFilter.res(filterResonance);
+
+    // Add a gain to boost bass output
+    bassGain = new p5.Gain();
+    bassGain.amp(7);
 
   // Create a LowPass filter (you can switch to HighPass by changing this line)
   setRandomFrequencyRange(); // Set initial random frequency range
